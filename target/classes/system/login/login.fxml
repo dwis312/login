@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" 
+            prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="system.login.controller.LoginController">
+    <left>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="450.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../assets/img/logo_icon.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </VBox>
+    </left>
+    <right>
+        <VBox prefWidth="550.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox alignment="CENTER" prefHeight="600.0" prefWidth="470.0" spacing="10.0">
+                    <children>
+                        <Label text="Masuk ke akun Anda">
+                            <font>
+                                <Font size="26.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="40.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label text="Masukkan email Anda di bawah ini untuk login ke akun Anda" />
+                        <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="470.0" spacing="5.0">
+                            <children>
+                                <Label prefHeight="35.0" text="Email">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="email" prefHeight="40.0">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </TextField>
+                            </children>
+                            <VBox.margin>
+                                <Insets left="30.0" right="30.0" />
+                            </VBox.margin>
+                        </VBox>
+                        <VBox layoutX="40.0" layoutY="290.0" prefHeight="80.0" prefWidth="470.0" spacing="5.0">
+                            <children>
+                                <Label prefHeight="35.0" text="Password">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <PasswordField fx:id="password" prefHeight="40.0" />
+                            </children>
+                            <VBox.margin>
+                                <Insets left="30.0" right="30.0" />
+                            </VBox.margin>
+                        </VBox>
+                        <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#btnLogin" prefHeight="40.0" prefWidth="543.0" style="-fx-background-color: #5060b2;" text="Masuk" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Button>
+                        <Hyperlink fx:id="lupaPassword" onAction="#lupaPassword" text="Lupa kata sandi Anda?" />
+                        <HBox alignment="CENTER" prefHeight="16.0" prefWidth="200.0">
+                            <children>
+                                <Label text="Belum punya akun?" />
+                                <Hyperlink fx:id="linkDaftar" onAction="#toLink" text="Mendaftar" />
+                            </children>
+                        </HBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="80.0" right="80.0" />
+                    </VBox.margin>
+                </VBox>
+            </children>
+        </VBox>
+    </right>
+</BorderPane>
