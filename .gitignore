@@ -1,0 +1,7 @@
+
+# Maven build directory
+target/
+
+# Optional: NetBeans user directory files (like project-name.iml)
+# .idea/
+# *.iml
