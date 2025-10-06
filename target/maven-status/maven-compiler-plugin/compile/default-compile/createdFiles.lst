@@ -1,5 +1,12 @@
+system/login/utils/TokenManager.class
 system/login/controller/LoginController.class
-module-info.class
+system/login/model/User.class
 system/login/App.class
-system/login/utils/Flash.class
+system/login/model/AuthResponse.class
+system/login/utils/JsonUtil.class
+system/login/service/ApiClient.class
 system/login/controller/RegisterController.class
+module-info.class
+system/login/utils/Config.class
+system/login/service/AuthService.class
+system/login/utils/Flash.class
