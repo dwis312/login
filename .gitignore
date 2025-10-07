@@ -2,6 +2,11 @@
 # Maven build directory
 target/
 
+# NetBeans
+nbproject/private/
+build/
+dist/
+
 # Optional: NetBeans user directory files (like project-name.iml)
-# .idea/
-# *.iml
+.idea/
+*.iml

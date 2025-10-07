@@ -12,7 +12,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import system.login.App;
+import system.login.model.AuthResponse;
+import system.login.model.User;
+import system.login.service.AuthService;
 import system.login.utils.Flash;
+import system.login.utils.TokenManager;
 
 public class RegisterController {
 
@@ -37,31 +41,39 @@ public class RegisterController {
             long nikValue = 0;
             String alamatValue = alamat.getText().trim();
             String emailValue = email.getText().trim();
+            String passwordValue = "1234";
             String noWaValue = noWa.getText().trim();
             String jenisKelaminValue = radioBtn1.isSelected() ? "Laki-laki" : "Perempuan";
 
+            nikValue = Long.parseLong(nikString);
+
+            User request = new User(namaValue, nikValue, alamatValue, noWaValue, emailValue, passwordValue, jenisKelaminValue);
             try {
-                nikValue = Long.parseLong(nikString);
-            } catch (NumberFormatException e) {
-                Flash.showAlert("Format NIK", "NIK harus angka.", Alert.AlertType.ERROR);
-                return;
+                AuthResponse response = AuthService.register(request);
+            
+                if (response != null && response.getToken() != null) {
+                    System.out.println("Pendaftaran berhasil, Token: " + response.getToken());
+                    TokenManager.setToken(response.getToken());
+                    Flash.showAlert("Berhasil", "Pendaftaran Berhasil.", Alert.AlertType.INFORMATION);
+                    clearForm();
+                    App.setRoot("login");
+                } else {
+                    Flash.showAlert("Duplikat Data", "NIK atau email sudah terdaftar.", Alert.AlertType.ERROR);
+                    return;
+                }
+            } catch (Exception e) {
+                System.err.println("API Error saat registrasi: " + e.getMessage());
+                e.printStackTrace();
+
+                String errorMessage = e.getMessage().contains("Kesalahan API") || e.getMessage().contains("response code")
+                        ? e.getMessage() 
+                        : "Gagal terhubung ke server atau terjadi kesalahan tak terduga. Silakan coba lagi.";
+
+                Flash.showAlert("Kesalahan Pendaftaran", errorMessage, Alert.AlertType.ERROR);
             }
 
-//            Person person = new Person(namaValue, nikValue, alamatValue, jenisKelaminValue, noWaValue, emailValue);
-//            boolean sukses = PersonRepository.getInstance().add(person);
-//
-//            if (!sukses) {
-//                Flash.showAlert("Duplikat Data", "NIK atau email sudah terdaftar.", Alert.AlertType.ERROR);
-//                return;
-//            }
-
-            Flash.showAlert("Berhasil", "Pendaftaran Berhasil.", Alert.AlertType.INFORMATION);
-            clearForm();
-            App.setRoot("login");
         } catch (NumberFormatException e) {
             Flash.showAlert("Format NIK", "NIK harus angka.", Alert.AlertType.ERROR);
-        } catch (IOException e) {
-            e.getMessage();
         }
     }
 

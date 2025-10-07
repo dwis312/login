@@ -5,6 +5,7 @@
 package system.login.service;
 
 import system.login.model.AuthResponse;
+import system.login.model.User;
 import system.login.utils.Config;
 import system.login.utils.JsonUtil;
 
@@ -17,6 +18,13 @@ public class AuthService {
     public static AuthResponse login(String email, String password) throws Exception{
         String endpoint = Config.BASE_URL + "/auth/login";
         String body = String.format("{\"email\":\"%s\",\"password\":\"%s\"}", email, password);
+        String response = ApiClient.sendRequest("POST", endpoint, body);
+        return JsonUtil.fromJson(response, AuthResponse.class);
+    }
+    
+    public static AuthResponse register(User request) throws Exception{
+        String endpoint = Config.BASE_URL + "/auth/register";
+        String body = JsonUtil.toJson(request);
         String response = ApiClient.sendRequest("POST", endpoint, body);
         return JsonUtil.fromJson(response, AuthResponse.class);
     }

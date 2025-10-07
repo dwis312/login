@@ -6,7 +6,7 @@ module system.login {
 
     opens system.login to javafx.fxml;
     opens system.login.controller to javafx.fxml;
-    opens system.login.model to javafx.fxml;
+    opens system.login.model to com.google.gson;
     opens system.login.service to javafx.fxml;
     opens system.login.utils to javafx.fxml;
     

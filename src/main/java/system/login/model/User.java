@@ -10,18 +10,20 @@ package system.login.model;
  */
 public class User {
     private String nama;
-    private int nik;
+    private long nik;
     private String alamat;
     private String noWa;
     private String email;
+    private String password;
     private String jenisKelamin;
 
-    public User(String nama, int nik, String alamat, String noWa, String email, String jenisKelamin) {
+    public User(String nama, long nik, String alamat, String noWa, String email, String password, String jenisKelamin) {
         this.nama = nama;
         this.nik = nik;
         this.alamat = alamat;
         this.noWa = noWa;
         this.email = email;
+        this.password = password;
         this.jenisKelamin = jenisKelamin;
     }
 
@@ -33,11 +35,11 @@ public class User {
         this.nama = nama;
     }
 
-    public int getNik() {
+    public long getNik() {
         return nik;
     }
 
-    public void setNik(int nik) {
+    public void setNik(long nik) {
         this.nik = nik;
     }
 
@@ -65,6 +67,14 @@ public class User {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     public String getJenisKelamin() {
         return jenisKelamin;
     }
@@ -72,7 +82,5 @@ public class User {
     public void setJenisKelamin(String jenisKelamin) {
         this.jenisKelamin = jenisKelamin;
     }
-    
-    
     
 }
